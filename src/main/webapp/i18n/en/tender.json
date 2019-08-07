@@ -1,0 +1,26 @@
+{
+    "tenderManagementApp": {
+        "tender": {
+            "home": {
+                "title": "Tenders",
+                "createLabel": "Create a new Tender",
+                "createOrEditLabel": "Create or edit a Tender"
+            },
+            "created": "A new Tender is created with identifier {{ param }}",
+            "updated": "A Tender is updated with identifier {{ param }}",
+            "deleted": "A Tender is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Tender {{ id }}?"
+            },
+            "detail": {
+                "title": "Tender"
+            },
+            "tenderID": "Tender ID",
+            "demandNumber": "Demand Number",
+            "claimAmount1": "Claim Amount 1",
+            "claimAmount2": "Claim Amount 2",
+            "employee": "Employee",
+            "location": "Location"
+        }
+    }
+}

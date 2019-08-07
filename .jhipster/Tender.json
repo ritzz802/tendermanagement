@@ -1,0 +1,48 @@
+{
+    "name": "Tender",
+    "fields": [
+        {
+            "fieldName": "tenderID",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "demandNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "claimAmount1",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "claimAmount2",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "customer",
+            "otherEntityRelationshipName": "tender",
+            "relationshipName": "employee"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "location",
+            "otherEntityRelationshipName": "tender",
+            "relationshipName": "location"
+        }
+    ],
+    "changelogDate": "20190613170715",
+    "javadoc": "not an ignored comment",
+    "entityTableName": "tender",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

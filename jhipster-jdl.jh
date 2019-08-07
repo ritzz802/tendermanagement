@@ -1,0 +1,62 @@
+
+// an ignored comment
+/** not an ignored comment */
+
+
+entity Tender {
+	tenderID String required,
+    demandNumber String,
+    claimAmount1 Integer,
+    claimAmount2 Integer
+  
+}
+/**
+ * The Employee entity.
+ */
+entity Customer {
+	/**
+	* The firstname attribute.
+	*/
+	firstName String required,
+	lastName String,
+	email String,
+	phoneNumber Integer,
+	address1 String required,
+	city String required
+}
+
+entity Product {
+	name String required,
+    make String ,
+    model String ,
+	qty Integer required,
+    hsnCode String,
+	price Double required,
+    spec String,
+    
+}
+
+entity Location {
+	locationName String required
+    quantity Integer required
+}
+
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	Customer{product} to Product,
+	Tender{employee} to	Customer,
+    Tender{location} to Location
+}
+
+// Set pagination options
+paginate Customer, Product, Tender with infinite-scroll
+
+// Use Data Transfert Objects (DTO)
+//dto * with mapstruct
+
+// Set service options to all except few
+//service all with serviceImpl except Employee, Job
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

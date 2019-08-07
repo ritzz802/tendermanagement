@@ -1,0 +1,60 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="tenderManagementApp.tender.home.title">Tenders</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-tender" [routerLink]="['/tender/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="tenderManagementApp.tender.home.createLabel">
+            Create new Tender
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="tenders">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="tenderID"><span jhiTranslate="tenderManagementApp.tender.tenderID">Tender ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="demandNumber"><span jhiTranslate="tenderManagementApp.tender.demandNumber">Demand Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="claimAmount1"><span jhiTranslate="tenderManagementApp.tender.claimAmount1">Claim Amount 1</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="claimAmount2"><span jhiTranslate="tenderManagementApp.tender.claimAmount2">Claim Amount 2</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let tender of tenders ;trackBy: trackId">
+                <td><a [routerLink]="['/tender', tender.id, 'view' ]">{{tender.id}}</a></td>
+                <td>{{tender.tenderID}}</td>
+                <td>{{tender.demandNumber}}</td>
+                <td>{{tender.claimAmount1}}</td>
+                <td>{{tender.claimAmount2}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/tender', tender.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/tender', tender.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'tender', { outlets: { popup: tender.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
